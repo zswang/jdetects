@@ -1,0 +1,35 @@
+{
+  "name": "jdetects",
+  "version": "0.0.1",
+  "description": "Detect if DevTools is open",
+  "main": "src/jdetects.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zswang/jdetects.git"
+  },
+  "keywords": [
+    "detect",
+    "console",
+    "devtools",
+    "developer"
+  ],
+  "author": "zswang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zswang/jdetects/issues"
+  },
+  "homepage": "https://github.com/zswang/jdetects",
+  "devDependencies": {
+    "jdists": "0.7.6",
+    "uglify-js": "2.4.15",
+    "mocha": "2.0.1",
+    "should": "4.1.0",
+    "jshint": "2.5.8"
+  },
+  "scripts": {
+    "_uglify": "uglifyjs jdetects.js -o jdetects.min.js -p 5 -c -m",
+    "dist": "jdists src/jdetects.js -o jdetects.js && npm run _uglify",
+    "test": "mocha -R spec",
+    "lint": "jshint src/*.js"
+  }
+}

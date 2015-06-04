@@ -1,0 +1,32 @@
+{
+  "name": "jdetects",
+  "version": "0.0.1",
+  "homepage": "https://github.com/zswang/jdetects",
+  "authors": "zswang",
+  "description": "Detect if DevTools is open",
+  "main": "jdetects.js",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "detect",
+    "console",
+    "devtools",
+    "developer"
+  ],
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "requirejs": "2.1.15"
+  },
+  "ignore": [
+    "tests",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/components",
+    "test",
+    "tests"
+  ]
+}

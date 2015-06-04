@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta encoding="utf-8">
+  <title>jdetects demo</title>
+</head>
+<body>
+  status: <div id="devtool-status"></div>
+</body>
+<script src="../jdetects.js"></script>
+<script>
+jdetects.create(function(status) {
+  document.querySelector('#devtool-status').innerHTML = status;
+});
+</script>
+</html>
