@@ -1,6 +1,6 @@
 {
   "name": "jdetects",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Detect if DevTools is open",
   "main": "src/jdetects.js",
   "repository": {
@@ -20,8 +20,6 @@
   },
   "homepage": "https://github.com/zswang/jdetects",
   "devDependencies": {
-    "jdists": "0.7.6",
-    "uglify-js": "2.4.15",
     "mocha": "2.0.1",
     "should": "4.1.0",
     "jshint": "2.5.8"
