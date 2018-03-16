@@ -54,7 +54,9 @@
       checkStatus = "off";
       console.log("%c", r, options.label || "");
       if (!options.once) {
-        console.clear();
+        if (console.clear) {
+          console.clear();
+        }
       }
       setStatus(checkStatus);
     }
