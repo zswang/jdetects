@@ -1,6 +1,6 @@
 {
   "name": "jdetects",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Detect if DevTools is open",
   "main": "src/jdetects.js",
   "repository": {

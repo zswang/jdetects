@@ -23,11 +23,6 @@
     var delay = options.delay || 1000;
     var instance = {};
     instance.onchange = options.onchange;
-    var checkStatus;
-    var element = new Image();
-    element.__defineGetter__("id", function() {
-      setStatus("on");
-    });
     var status = "unknown";
 
     /**
@@ -54,7 +49,7 @@
         checkStatus = "on";
       };
       checkStatus = "off";
-      console.log("%c", r, element);
+      console.log("%c", r);
       console.clear();
       setStatus(checkStatus);
     }
