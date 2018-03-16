@@ -8,6 +8,9 @@ jdetects(^^)
 
 Detect if DevTools is open
 
+@see [Find out whether Chrome console is open
+](https://stackoverflow.com/a/30638226/1068602)
+
 @see https://github.com/sindresorhus/devtools-detect
 
 ## examples
