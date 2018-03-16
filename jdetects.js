@@ -9,7 +9,7 @@
    * @return {Object|Function} 返回开发者工具状态监听器
    */
   function create(options) {
-    if (typeof options === 'function') {
+    if (typeof options === "function") {
       options = {
         onchange: options
       };
@@ -20,10 +20,10 @@
     instance.onchange = options.onchange;
     var checkStatus;
     var element = new Image();
-    element.__defineGetter__('id', function() {
-      checkStatus = 'on';
+    element.__defineGetter__("id", function() {
+      setStatus("on");
     });
-    var status = 'unknown';
+    var status = "unknown";
     /**
      * 获取开发者工具状态
      *
@@ -34,12 +34,20 @@
     }
     instance.getStatus = getStatus;
     function checkHandler() {
-      if (window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized) {
-        setStatus('on');
+      if (
+        window.Firebug &&
+        window.Firebug.chrome &&
+        window.Firebug.chrome.isInitialized
+      ) {
+        setStatus("on");
         return;
       }
-      checkStatus = 'off';
-      console.log(element);
+      var r = /./;
+      r.toString = function() {
+        checkStatus = "on";
+      };
+      checkStatus = "off";
+      console.log("%c", r, element);
       console.clear();
       setStatus(checkStatus);
     }
@@ -51,13 +59,13 @@
     function setStatus(value) {
       if (status !== value) {
         status = value;
-        if (typeof instance.onchange === 'function') {
+        if (typeof instance.onchange === "function") {
           instance.onchange(value);
         }
       }
     }
     var timer = setInterval(checkHandler, delay);
-    window.addEventListener('resize', checkHandler);
+    window.addEventListener("resize", checkHandler);
     /**
      * 是否已释放
      */
@@ -70,24 +78,22 @@
         return;
       }
       freed = true;
-      window.removeEventListener('resize', checkHandler);
+      window.removeEventListener("resize", checkHandler);
       clearInterval(timer);
     }
     instance.free = free;
     return instance;
   }
   exports.create = create;
-  if (typeof define === 'function') {
+  if (typeof define === "function") {
     if (define.amd || define.cmd) {
       define(function() {
         return exports;
       });
     }
-  }
-  else if (typeof module !== 'undefined' && module.exports) {
+  } else if (typeof module !== "undefined" && module.exports) {
     module.exports = exports;
-  }
-  else {
+  } else {
     window[exportName] = exports;
   }
-})('jdetects');
+})("jdetects");
