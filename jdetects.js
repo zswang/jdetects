@@ -3,10 +3,12 @@
   /**
    * 创建开发者工具状态监听器
    *
-   * @param {Object} options 配置项
+   * @param {Object|Function} options 配置项
    * @param {number} options.delay 侦测频率，单位：ms
+   * @param {boolean} options.once 只触发一次
+   * @param {string} option.label 显示文字
    * @param {Function} options.onchange 状态发生改变 function (status) {}
-   * @return {Object|Function} 返回开发者工具状态监听器
+   * @return {Object} 返回开发者工具状态监听器
    */
   function create(options) {
     if (typeof options === "function") {
@@ -40,10 +42,13 @@
       var r = /./;
       r.toString = function() {
         checkStatus = "on";
+        setStatus("on");
       };
       checkStatus = "off";
-      console.log("%c", r);
-      console.clear();
+      console.log("%c", r, options.label || "");
+      if (!options.once) {
+        console.clear();
+      }
       setStatus(checkStatus);
     }
     /**
@@ -59,8 +64,13 @@
         }
       }
     }
-    var timer = setInterval(checkHandler, delay);
-    window.addEventListener("resize", checkHandler);
+    var timer;
+    if (!options.once) {
+      setInterval(checkHandler, delay);
+      window.addEventListener("resize", checkHandler);
+    } else {
+      checkHandler();
+    }
     /**
      * 是否已释放
      */
@@ -73,8 +83,10 @@
         return;
       }
       freed = true;
-      window.removeEventListener("resize", checkHandler);
-      clearInterval(timer);
+      if (!options.once) {
+        window.removeEventListener("resize", checkHandler);
+        clearInterval(timer);
+      }
     }
     instance.free = free;
     return instance;

@@ -20,3 +20,15 @@ jdetects.create(function(status) {
   document.querySelector('#devtool-status').innerHTML = status;
 });
 ```
+
+## Once Change of Examples
+
+```js
+jdetects.create({
+	once: true,
+	label: 'zswang',
+	onchange: function (status) {
+		document.querySelector('#devtool-status').innerHTML = status;
+	}
+});
+```

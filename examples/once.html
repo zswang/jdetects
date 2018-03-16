@@ -12,8 +12,12 @@
 </body>
 <script src="../jdetects.js"></script>
 <script>
-  jdetects.create(function (status) {
-    document.querySelector('#devtool-status').innerHTML = status;
+  jdetects.create({
+    once: true,
+    label: 'zswang',
+    onchange: function (status) {
+      document.querySelector('#devtool-status').innerHTML = status;
+    }
   });
 </script>
 
